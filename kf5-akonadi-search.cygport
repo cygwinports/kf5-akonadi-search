@@ -1,0 +1,31 @@
+inherit kf5
+
+NAME="kf5-akonadi-search"
+VERSION=17.12.3
+RELEASE=1
+CATEGORY="Libs"
+SUMMARY="Akonadi search library"
+
+PATCH_URI="17.04-cygwin-priority.patch"
+
+PKG_NAMES="libKF5AkonadiSearch5 libKF5AkonadiSearch-devel"
+libKF5AkonadiSearch5_CONTENTS="
+	etc/xdg/akonadi-search.*categories
+	usr/bin/akonadi_indexing_agent.exe
+	usr/bin/cygKF5AkonadiSearch*-5.dll
+	usr/lib/qt5/plugins/akonadi/
+	usr/lib/qt5/plugins/kcm_krunner_pimcontacts.dll
+	usr/lib/qt5/plugins/krunner_pimcontacts.dll
+	usr/share/akonadi/agents/akonadiindexingagent.desktop
+	usr/share/doc/${NAME}
+	usr/share/kservices5/plasma-krunner-pimcontacts.desktop
+	usr/share/kservices5/plasma-krunner-pimcontacts_config.desktop
+	usr/share/locale/*/LC_MESSAGES/akonadi_search.mo
+"
+libKF5AkonadiSearch_devel_REQUIRES="libKF5Akonadi-devel"
+libKF5AkonadiSearch_devel_CONTENTS="
+	usr/include/KF5/AkonadiSearch/
+	usr/include/KF5/akonadi_search_version.h
+	usr/lib/cmake/KF5AkonadiSearch/
+	usr/lib/libKF5AkonadiSearch*.dll.a
+"

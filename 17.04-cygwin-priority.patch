@@ -1,0 +1,20 @@
+--- origsrc/akonadi-search-17.04.3/agent/priority.cpp	2017-06-19 00:05:33.000000000 -0500
++++ src/akonadi-search-17.04.3/agent/priority.cpp	2017-07-18 22:36:55.703621700 -0500
+@@ -29,7 +29,7 @@
+ 
+ #include <sys/resource.h>
+ 
+-#ifndef _WIN32
++#ifdef Q_OS_LINUX
+ #include <unistd.h>
+ #include <sys/syscall.h>
+ #include <errno.h>
+@@ -81,7 +81,7 @@ bool lowerIOPriority()
+ 
+ bool lowerPriority()
+ {
+-#ifndef Q_OS_WIN
++#ifdef Q_OS_LINUX
+     return !setpriority(PRIO_PROCESS, 0, 19);
+ #else
+     return false;
